@@ -1,1 +1,1 @@
-http://153.120.129.114/pic/nagaokakyo.jpg
+http://example.jpg
