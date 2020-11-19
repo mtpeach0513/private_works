@@ -8,6 +8,14 @@
 
 ネットワークフォルダまで画像をダウンロードしにいってモザイク（この部分のスクリプトも作成していました）が面倒だったので、一緒くたにしたものを作りました。
 
+# Demo
+
+こんな感じ
+
+|picture|mosaic|  
+|-|-|  
+|<img src="https://user-images.githubusercontent.com/41788884/99633842-eb7ec180-2a82-11eb-8156-4a7ce578f11e.jpg" width="480">|<img src="https://user-images.githubusercontent.com/41788884/99634410-cd659100-2a83-11eb-9c3f-5aafe7da867d.jpg" width="480">|
+
 # Requirement
 
 - requests 2.24.0
