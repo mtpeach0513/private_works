@@ -22,11 +22,11 @@ cv2.imshow("mosaic", img)
 # 任意のファイルパスを指定
 path = pathlib.Path(args)
 filepath = str(path.parent) + '/' + path.stem + '_mosaic' + path.suffix
+count = 1
 if os.path.exists(filepath) == False:
     cv2.imwrite(filepath, img)
     print("モザイク画像の保存完了")
 else:
-    count = 1
     path = pathlib.Path(filepath)
     filepath = str(path.parent) + '/' + path.stem + str(count) + path.suffix
     cv2.imwrite(filepath, img)
