@@ -54,7 +54,9 @@ def mosaic_img(base_dir, filename, filepath):
 if __name__ == '__main__':
     url_txt = "url_list.txt"    # .jpgなどで終わるURLが入力されたtxtファイル
     images_dir = "picture"    # pictureディレクトリが必要
+    os.makedirs(images_dir, exist_ok=True)
     mosaic_dir = "mosaics"    # mosaicsが必要。これらは作業ディレクトリ内に作成
+    os.makedirs(mosaic_dir, exist_ok=True)
     idx = 0
     with open(url_txt, "r") as fin:    # "r"は読み込み専用
         for line in fin:

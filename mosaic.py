@@ -1,10 +1,14 @@
-''' python mosaic.py "sample.jpg" '''
+''' python mosaic.py sample.jpg '''
 
 import cv2
 import numpy as np
 import os
 import sys
 import pathlib
+import datetime
+import time
+import platform
+
 
 # 引数は画像のファイルパス
 args = sys.argv[1]
@@ -21,16 +25,23 @@ img = np.where(mask == 255, big, src)
 cv2.imshow("mosaic", img)
 # 任意のファイルパスを指定
 path = pathlib.Path(args)
-filepath = str(path.parent) + '/' + path.stem + '_mosaic' + path.suffix
+st = path.stat() # pathlib.Pathオブジェクトからメタデータを取得
+# stat().st_ctimeがWindowsにおけるファイルの作成日時
+dt = datetime.datetime.fromtimestamp(st.st_ctime) # 得られるタイムスタンプはUNIX時間なのでdatetime型に変換
+dt_fm = f"{dt:%Y%m%d_%H%M}" # ファイル名に使いやすいようにフォーマット
+filepath = str(path.parent) + '/' + dt_fm + path.suffix
+#filepath = str(path.parent) + '/' + path.stem + '_mosaic' + path.suffix
+
 count = 1
 if os.path.exists(filepath) == False:
     cv2.imwrite(filepath, img)
-    print("モザイク画像の保存完了")
+    print("Save completed. Image's filename:", filepath)
 else:
     path = pathlib.Path(filepath)
-    filepath = str(path.parent) + '/' + path.stem + str(count) + path.suffix
+    filepath = str(path.parent) + '/' + dt_fm + '_' + str(count) + path.suffix
     cv2.imwrite(filepath, img)
-    print("すでに同名のファイルがあります。新しい名前で保存しました。")
+    print("There is already a file with the same name. Saved the file with a new name.")
+    print("Image's filename: ", filepath)
     count += 1
 
 cv2.waitKey()
