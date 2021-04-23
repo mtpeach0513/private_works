@@ -59,7 +59,7 @@ img_down.batがそのバッチファイルにあたります。
 ```
 cd private_works
 call C:\ProgramData\Anaconda3\Scripts\activate.bat
-call activate env_nanme
+call activate env_name
 ```
 部分は適宜自分の環境に合わせてください。cdコマンドで作業ディレクトリ（img_download.pyがあるディレクトリ）に移動、callコマンドでanacondaの仮想環境を呼び出しています。  
 callコマンド部分はanacondaで仮想環境を構築していない場合は不要です。
